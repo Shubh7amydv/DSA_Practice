@@ -12,20 +12,27 @@ public:
 
             mp[fruits[r]]++;
 
-            // if invalid: shrink window until size <= 2
-            while(mp.size() > 2){
+            // if invalid
+            if(mp.size()>2){
+                // move left ptr 
+                while(mp.size() > 2){
 
-                mp[fruits[l]]--;
-                if(mp[fruits[l]]==0){
-                    mp.erase(fruits[l]);
+                    mp[fruits[l]]--;
+                    if(mp[fruits[l]]==0){
+                        mp.erase(fruits[l]);
+                    }
+                    l++;
+
                 }
-                l++;
-
             }
 
-            // window is valid here
-            cnt=max(cnt,r-l+1);
-            r++;
+          if(mp.size() <= 2){
+                cnt = max(cnt, r - l + 1);
+           }
+            
+          r++;
+
+
 
         }
 
